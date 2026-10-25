@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Admin</title><link rel="stylesheet" href="/style.css"></head><body><main class="w">
+<h1>Admin panel</h1>
+<div class="box" id="login"><label for="pw">Admin password</label><input id="pw" type="password"><button id="go">Log in</button><p id="msg"></p></div>
+<div class="box" id="panel" hidden>
+<h2>Ad codes (paste the Adsterra code)</h2>
+<label for="top">Top banner</label><textarea id="top" rows="4"></textarea>
+<label for="middle">Middle (under the tool)</label><textarea id="middle" rows="4"></textarea>
+<label for="bottom">Bottom banner</label><textarea id="bottom" rows="4"></textarea>
+<label for="global">Global code (Social Bar / Popunder / Native, added to every page)</label><textarea id="global" rows="4"></textarea>
+<h2>API keys</h2>
+<label for="youtube">YouTube Data API v3 key</label><input id="youtube" autocomplete="off">
+<button id="save">Save settings</button><p id="msg2"></p></div>
+<script>
+const $=i=>document.getElementById(i),H=()=>({Authorization:'Bearer '+sessionStorage.pw});
+const ids=['top','middle','bottom','global'];
+async function load(){const r=await fetch('/api/admin',{headers:H()});
+if(!r.ok){$('msg').textContent='Wrong password';return}
+const s=await r.json();ids.forEach(i=>$(i).value=(s.ads||{})[i]||'');$('youtube').value=(s.keys||{}).youtube||'';
+$('login').hidden=true;$('panel').hidden=false}
+$('go').onclick=()=>{sessionStorage.pw=$('pw').value;load()};
+$('save').onclick=async()=>{const ads={};ids.forEach(i=>ads[i]=$(i).value.trim());
+const r=await fetch('/api/admin',{method:'POST',headers:{...H(),'Content-Type':'application/json'},body:JSON.stringify({ads,keys:{youtube:$('youtube').value.trim()}})});
+$('msg2').textContent=r.ok?'Saved. Ads update on the site within 5 minutes.':'Save failed'};
+if(sessionStorage.pw)load();
+</script></main></body></html>

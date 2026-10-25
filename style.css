@@ -1,0 +1,19 @@
+:root{--bg:#eef2f1;--c:#fff;--t:#14212b;--m:#56646f;--p:#0b7a75;--b:#d5dedc;--e:#b42318}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1517;--c:#162024;--t:#e6eeee;--m:#92a3a6;--p:#3cc2b8;--b:#26353a;--e:#ff8a80}}
+*{box-sizing:border-box}body{margin:0;font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--t)}
+a{color:var(--p)}.w{max-width:1080px;margin:auto;padding:0 16px}
+header{background:var(--c);border-bottom:2px solid var(--p)}header .w{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;padding:12px 16px}
+.logo{font-weight:800;font-size:1.35rem;text-decoration:none;color:var(--t)}nav a{margin-right:14px;text-decoration:none;color:var(--m);font-size:.92rem}nav a:hover{color:var(--p)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.2;margin:.8em 0 .3em}h2{margin-top:1.6em}.lead{color:var(--m);margin-top:0}.crumbs{font-size:.85rem;color:var(--m);margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{display:block;background:var(--c);border:1px solid var(--b);border-left:4px solid var(--p);border-radius:6px;padding:14px 16px;text-decoration:none;color:var(--t)}
+.card:hover,.card:focus-visible{border-color:var(--p);outline:none;box-shadow:0 0 0 2px var(--p)}.card b{display:block}.card span{color:var(--m);font-size:.88rem}
+.box{background:var(--c);border:1px solid var(--b);border-radius:6px;padding:20px;margin:16px 0}
+label{display:block;font-weight:600;margin:14px 0 4px}textarea,input,select{width:100%;padding:10px;border:1px solid var(--b);border-radius:6px;background:var(--bg);color:var(--t);font:inherit}
+textarea:focus,input:focus,select:focus,button:focus-visible{outline:2px solid var(--p)}
+.btn,button{background:var(--p);color:var(--bg);border:0;border-radius:6px;padding:10px 20px;font:inherit;font-weight:600;cursor:pointer;margin:16px 8px 0 0;text-decoration:none;display:inline-block}
+button.alt{background:transparent;color:var(--p);border:1px solid var(--p)}
+#out{white-space:pre-wrap;word-break:break-word;margin-top:16px;padding:14px;background:var(--bg);border-radius:6px;min-height:24px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem}#out.err{color:var(--e)}#out:empty{display:none}
+.hero{text-align:center;padding:36px 0 8px}.hero input{max-width:540px;font-size:1.05rem}
+.ad{text-align:center;margin:14px 0;overflow:hidden;max-width:100%}.ad:empty{display:none}
+footer{margin-top:48px;padding:24px 0;border-top:1px solid var(--b);color:var(--m);font-size:.9rem}
